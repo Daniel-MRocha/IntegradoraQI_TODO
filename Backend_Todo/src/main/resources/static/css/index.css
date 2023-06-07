@@ -1,0 +1,20 @@
+*{
+    margim:0 0;
+    padding:0
+}
+
+#Hcab{
+    border: solid 1px;
+    display:flex;
+}
+
+body{
+    background-color: #f3e8df;
+}
+
+img{
+    width:50px;
+    height:50px;
+    padding-left:15px;
+    border:solid 1px #f2ca0b;
+}

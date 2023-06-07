@@ -7,7 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class BackendTodoApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(BackendTodoApplication.class, args);
+		System.out.printf("Teste funcional");
 	}
 
 }

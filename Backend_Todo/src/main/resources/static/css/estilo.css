@@ -1,0 +1,17 @@
+body{
+	border: 2px;
+	border-style:solid;
+	border-color: black;
+	background-color:yellow;	
+}
+aside{
+	width:400px;
+	height:200px;
+	border:solid 2px black;
+	display:flex;
+}
+section{
+	border: solid 2px white;
+	border-radius:5px;
+	display:block;
+}

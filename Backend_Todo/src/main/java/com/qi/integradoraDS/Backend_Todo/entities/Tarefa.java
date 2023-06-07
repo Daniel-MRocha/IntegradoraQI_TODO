@@ -1,11 +1,13 @@
 package com.qi.integradoraDS.Backend_Todo.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
+@JsonIgnoreProperties( value={"handler","hibernateLazyInitializer","FieldHandler"})
 public class Tarefa implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -14,10 +16,10 @@ public class Tarefa implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(columnDefinition = "VARCHAR", length = 90)
+
     private String titulo;
 
-    @Column(columnDefinition = "TEXT",length = 300)
+
     private String tarefa;
 
     @ManyToOne

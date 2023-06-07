@@ -1,5 +1,6 @@
 package com.qi.integradoraDS.Backend_Todo.Controller;
 
+import com.qi.integradoraDS.Backend_Todo.Dtos.PrioridadeDto;
 import com.qi.integradoraDS.Backend_Todo.entities.Prioridade;
 import com.qi.integradoraDS.Backend_Todo.repositories.PrioridadeRepository;
 import com.qi.integradoraDS.Backend_Todo.services.PrioridadeService;
@@ -18,7 +19,7 @@ public class PrioridadeController{
     private PrioridadeService PrioServ;
 
     @GetMapping
-    public List<Prioridade> buscaPrioridades(){
-        return PrioServ.prioridadesList();
+    public List<PrioridadeDto> buscaPrioridades(){
+        return PrioServ.prioridadesList().stream().map(x-> new PrioridadeDto(x)).toList();
     }
 }
