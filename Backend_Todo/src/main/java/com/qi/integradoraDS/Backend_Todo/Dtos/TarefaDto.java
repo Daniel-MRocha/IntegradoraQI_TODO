@@ -8,7 +8,10 @@ import com.qi.integradoraDS.Backend_Todo.entities.Tarefa;
 
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+
+
+
 
 public class TarefaDto implements Serializable {
     private static final long serialVersionUID= 1L;
@@ -19,9 +22,9 @@ public class TarefaDto implements Serializable {
     private String tarefa;
     private String prioridade;
     private String situacao;
-    private LocalDateTime inicio;
-    private LocalDateTime deadline;
-    private LocalDateTime concluida;
+    private String inicio;
+    private String deadline;
+    private String concluida;
 
     @Deprecated
     public TarefaDto(){};
@@ -31,6 +34,10 @@ public class TarefaDto implements Serializable {
         tarefa=trfPjc.getTAREFA();
         prioridade=trfPjc.getTIPO();
         situacao=trfPjc.getSTATUS();
+        inicio=trfPjc.getINICIO();
+        deadline=trfPjc.getDEADLINE();
+        concluida=trfPjc.getCONCLUIDA();
+
     }
 
     public int getId() {
@@ -73,27 +80,27 @@ public class TarefaDto implements Serializable {
         this.situacao = situacao;
     }
 
-    public LocalDateTime getInicio() {
+    public String getInicio() {
         return inicio;
     }
 
-    public void setInicio(LocalDateTime inicio) {
+    public void setInicio(String inicio) {
         this.inicio = inicio;
     }
 
-    public LocalDateTime getDeadline() {
+    public String getDeadline() {
         return deadline;
     }
 
-    public void setDeadline(LocalDateTime deadline) {
+    public void setDeadline(String deadline) {
         this.deadline = deadline;
     }
 
-    public LocalDateTime getConcluida() {
-        return concluida;
+    public String getConcluida() {
+        return this.concluida;
     }
 
-    public void setConcluida(LocalDateTime concluida) {
+    public void setConcluida(String concluida) {
         this.concluida = concluida;
     }
 }

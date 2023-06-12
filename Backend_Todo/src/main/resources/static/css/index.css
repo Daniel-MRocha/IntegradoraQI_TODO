@@ -1,12 +1,25 @@
-*{
-    margim:0 0;
-    padding:0
+
+body{
+    display:flex;
+    flex-direction:column;
+    row-gap:70px;
 }
 
 #Hcab{
     border: solid 1px;
     display:flex;
+
+    }
+
+#central{
+    border:solid 2px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:space-between;
 }
+
+
 
 body{
     background-color: #f3e8df;

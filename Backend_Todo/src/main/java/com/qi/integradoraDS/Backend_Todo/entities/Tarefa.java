@@ -1,10 +1,11 @@
 package com.qi.integradoraDS.Backend_Todo.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @JsonIgnoreProperties( value={"handler","hibernateLazyInitializer","FieldHandler"})
@@ -30,14 +31,15 @@ public class Tarefa implements Serializable {
     @JoinColumn(name = "ID_SITUACAO")
     private Situacao situacao;
 
-    @Column(columnDefinition = "DATETIME")
-    private LocalDateTime inicio;
+    @JsonFormat(pattern="YYYY-MM-DD")
+    @Column(columnDefinition = "DATE")
+    private LocalDate inicio;
 
-    @Column(columnDefinition = "DATETIME")
-    private LocalDateTime deadline;
+    @Column(columnDefinition = "DATE")
+    private LocalDate deadline;
 
-    @Column(columnDefinition = "DATETIME")
-    private LocalDateTime concluida;
+    @Column(columnDefinition = "DATE")
+    private LocalDate concluida;
 
     @Deprecated
     public Tarefa(){};
@@ -54,13 +56,13 @@ public class Tarefa implements Serializable {
     public void setSituacao(Situacao situacao) {
         this.situacao = situacao;
     }
-    public void setInicio(LocalDateTime inicio) {
+    public void setInicio(LocalDate inicio) {
         this.inicio = inicio;
     }
-    public void setDeadline(LocalDateTime deadline) {
+    public void setDeadline(LocalDate deadline) {
         this.deadline = deadline;
     }
-    public void setConcluida(LocalDateTime concluida) {
+    public void setConcluida(LocalDate concluida) {
         this.concluida = concluida;
     }
 
@@ -80,13 +82,13 @@ public class Tarefa implements Serializable {
     public Situacao getSituacao() {
         return situacao;
     }
-    public LocalDateTime getInicio() {
+    public LocalDate getInicio() {
         return inicio;
     }
-    public LocalDateTime getDeadline() {
+    public LocalDate getDeadline() {
         return deadline;
     }
-    public LocalDateTime getConcluida() {
+    public LocalDate getConcluida() {
         return concluida;
     }
 }
