@@ -1,11 +1,9 @@
 package com.qi.integradoraDS.Backend_Todo.Projection;
 
-import org.springframework.context.annotation.Bean;
-
-import java.time.LocalDate;
 
 
 public interface TarefaProjection {
+        int getID();
         String getTITULO();
         String getTAREFA();
         String getTIPO();

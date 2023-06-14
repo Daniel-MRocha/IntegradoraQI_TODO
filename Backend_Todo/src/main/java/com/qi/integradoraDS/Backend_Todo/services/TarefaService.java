@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -25,25 +26,24 @@ public class TarefaService {
         var listaTarefas = trfRpy.findAll();
         for (Tarefa t: listaTarefas){
             TarefaProjection tPjt = trfRpy.todasTarefas(t.getId());
-            System.out.println(tPjt.getINICIO().getClass());
             lDto.add(new TarefaDto(tPjt));
         }
         return lDto;
     }
 
-    public Optional<TarefaDto> tarefaUnitaria(Integer num){
+    //verifica se o registro existe
+    public TarefaDto buscaTarefaUnitaria(Integer num) {
         var aux = trfRpy.findById(num);
-        try{
-            TarefaDto tarefaUni = new TarefaDto();
-            tarefaUni.setTarefa(aux.get().getTarefa());
-            tarefaUni.setTitulo(aux.get().getTitulo());
-            tarefaUni.setInicio(aux.get().getInicio().toString());
-            tarefaUni.setDeadline(aux.get().getDeadline().toString());
-            //tarefaUni.setConcluida(aux.get().getConcluida().toString());
-                return Optional.of(tarefaUni);
-        }catch (Exception e){
-                return Optional.empty();
-        }
+            if(aux.isPresent()){
+                TarefaProjection tprju = trfRpy.todasTarefas(aux.get().getId());
+                TarefaDto tDto = new TarefaDto(tprju);
+                return tDto;
+            }else {
+                return null;
+            }
     }
 
+
 }
+
+

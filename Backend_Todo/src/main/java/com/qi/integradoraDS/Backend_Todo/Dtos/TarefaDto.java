@@ -26,10 +26,11 @@ public class TarefaDto implements Serializable {
     private String deadline;
     private String concluida;
 
-    @Deprecated
+
     public TarefaDto(){};
 
     public TarefaDto(TarefaProjection trfPjc){
+        id=trfPjc.getID();
         titulo=trfPjc.getTITULO();
         tarefa=trfPjc.getTAREFA();
         prioridade=trfPjc.getTIPO();

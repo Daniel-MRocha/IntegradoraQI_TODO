@@ -41,7 +41,7 @@ public class Tarefa implements Serializable {
     @Column(columnDefinition = "DATE")
     private LocalDate concluida;
 
-    @Deprecated
+
     public Tarefa(){};
     //Setters
     public void setTitulo(String titulo) {
