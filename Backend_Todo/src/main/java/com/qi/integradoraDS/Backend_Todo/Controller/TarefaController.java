@@ -2,6 +2,8 @@ package com.qi.integradoraDS.Backend_Todo.Controller;
 
 
 import com.qi.integradoraDS.Backend_Todo.Dtos.TarefaDto;
+import com.qi.integradoraDS.Backend_Todo.Projection.TarefaProjection;
+import com.qi.integradoraDS.Backend_Todo.entities.Tarefa;
 import com.qi.integradoraDS.Backend_Todo.services.TarefaService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,5 +30,9 @@ public class TarefaController {
        return trfSrc.buscaTarefaUnitaria(numero);
     }
 
+    @GetMapping(value = "/del/{numero}")
+    public void deletaTarefaUnitaria (@PathVariable int numero){
+            trfSrc.deletaTarefaUnitaria(numero);
+        }
+    }
 
-}

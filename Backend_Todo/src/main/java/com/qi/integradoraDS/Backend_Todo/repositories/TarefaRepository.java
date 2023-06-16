@@ -19,5 +19,10 @@ public interface TarefaRepository extends JpaRepository<Tarefa,Integer> {
             """)
     TarefaProjection todasTarefas(Integer Id);
 
+    @Query(nativeQuery = true,value = """
+            DELETE FROM TAREFA WHERE TAREFA.ID=:Id
+            """)
+    TarefaProjection deletaTarefa(Integer Id);
+
 }
 

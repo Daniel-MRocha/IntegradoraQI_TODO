@@ -31,7 +31,8 @@ public class TarefaService {
         return lDto;
     }
 
-    //verifica se o registro existe
+    //verifica se o registro existe,caso exita, envia a TarefaDto
+    @Transactional(readOnly = true)
     public TarefaDto buscaTarefaUnitaria(Integer num) {
         var aux = trfRpy.findById(num);
             if(aux.isPresent()){
@@ -42,6 +43,12 @@ public class TarefaService {
                 return null;
             }
     }
+
+    public   void deletaTarefaUnitaria(Integer num){
+         var aux = trfRpy.findById(num);
+            aux.ifPresent(trf -> { trfRpy.delete(trf);});
+    }
+
 
 
 }
