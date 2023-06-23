@@ -44,9 +44,13 @@ public class TarefaService {
             }
     }
 
-    public   void deletaTarefaUnitaria(Integer num){
+    public void deletaTarefaUnitaria(Integer num){
          var aux = trfRpy.findById(num);
-            aux.ifPresent(trf -> { trfRpy.delete(trf);});
+            aux.ifPresent(trf -> trfRpy.delete(trf));
+    }
+
+    public void grava(Tarefa t){
+        trfRpy.save(t);
     }
 
 

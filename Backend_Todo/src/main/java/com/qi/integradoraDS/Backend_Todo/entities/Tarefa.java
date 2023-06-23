@@ -42,7 +42,7 @@ public class Tarefa implements Serializable {
     private LocalDate concluida;
 
 
-    public Tarefa(){};
+    public Tarefa(){}
     //Setters
     public void setTitulo(String titulo) {
         this.titulo = titulo;

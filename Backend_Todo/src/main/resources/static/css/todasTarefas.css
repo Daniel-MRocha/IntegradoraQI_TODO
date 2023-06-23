@@ -1,0 +1,54 @@
+#visualizar{
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+    padding-left:70px;
+    padding-right:70px;
+    flex-direction: column;
+   }
+
+
+        .boxTarefa{
+        
+                background-color: #f3e8df;
+                gap: 5px;
+                border:solid 2px rgb(255, 255, 255);
+                border-radius: 7px;
+                width:380px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding-top: 5px;
+                margin-top: 7px;
+                
+        }
+
+        .boxTitulo{
+        
+                background-color: #d2b399;
+                font-size: 12px;
+                font-weight: 400;
+                margin: 5px;
+                margin-top: 2px;
+                padding: 2px;
+                display: block;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        .boxConteudo{
+                font-size: 13px;
+                display : block;
+                width: 350px;
+                margin-left: 18px;
+                font-family: 'Times New Roman', Times, serif;
+                
+        }
+        .boxDatas{
+                display: block;
+                width: 350px;
+                font-size: 10px;
+                margin-left: 5px;
+                margin-bottom: 7px;
+                padding-top: 2px;
+                border-top: double  1px white;
+                 
+        }
