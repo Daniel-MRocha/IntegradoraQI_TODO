@@ -17,10 +17,10 @@ public class Tarefa implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-
+    @Column(columnDefinition = "varchar", length = 40)
     private String titulo;
 
-
+    @Column(columnDefinition = "text", length = 300)
     private String tarefa;
 
     @ManyToOne

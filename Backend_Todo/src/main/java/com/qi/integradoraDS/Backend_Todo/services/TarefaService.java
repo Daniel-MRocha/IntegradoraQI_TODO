@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +54,15 @@ public class TarefaService {
         trfRpy.save(t);
     }
 
+    public void tarefaConcluida(Integer num){
+        Tarefa trf = trfRpy.getReferenceById(num);
+        trf.setConcluida(LocalDate.now());
+        trfRpy.save(trf);
+}
 
+    public Tarefa updateTarefa(Integer num){
+        return trfRpy.getReferenceById(num);
+    }
 
 }
 

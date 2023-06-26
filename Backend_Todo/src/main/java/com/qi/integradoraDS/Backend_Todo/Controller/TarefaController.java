@@ -46,25 +46,50 @@ public class TarefaController {
         trfSrc.deletaTarefaUnitaria(numero);
     }
 
+    //todo completar
     @PostMapping
     public String salvaTarefa(@RequestParam String titulo,
                               @RequestParam String tarefa,
                               @RequestParam int prioridade,
-                              @RequestParam int situacao,
                               @RequestParam String inicio,
-                              @RequestParam String deadline,
-                              @RequestParam String concluida) {
+                              @RequestParam String deadline) {
         Tarefa trf_s = new Tarefa();
         trf_s.setTitulo(titulo);
         trf_s.setTarefa(tarefa);
         trf_s.setPrioridade(priSrc.buscaPri(prioridade));
-        trf_s.setSituacao(sitSrv.buscaSit(situacao));
+        trf_s.setSituacao(sitSrv.buscaSit(1));
         trf_s.setInicio(LocalDate.parse(inicio));
         trf_s.setDeadline(LocalDate.parse(deadline));
-        trf_s.setConcluida(LocalDate.parse(concluida));
+
 
         trfSrc.grava(trf_s);
         return "ok";
     }
-}
 
+    //todo consertar situação
+    @PostMapping(value = "/up")
+    public String updateTarefa(@RequestParam int id_update,
+                              @RequestParam String titulo,
+                              @RequestParam String tarefa,
+                              @RequestParam int prioridade,
+                              @RequestParam String inicio,
+                              @RequestParam String deadline) {
+        Tarefa trf_u = trfSrc.updateTarefa(id_update);
+        trf_u.setTitulo(titulo);
+        trf_u.setTarefa(tarefa);
+        trf_u.setPrioridade(priSrc.buscaPri(prioridade));
+        trf_u.setSituacao(sitSrv.buscaSit(1));
+        trf_u.setInicio(LocalDate.parse(inicio));
+        trf_u.setDeadline(LocalDate.parse(deadline));
+
+
+        trfSrc.grava(trf_u);
+        return "ok";
+    }
+
+
+    @GetMapping(value = "/conc/{numero}")
+    public void concluiTarefa(@PathVariable Integer numero){
+        trfSrc.tarefaConcluida(numero);
+    }
+}

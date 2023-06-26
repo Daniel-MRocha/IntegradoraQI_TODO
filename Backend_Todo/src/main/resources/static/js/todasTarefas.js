@@ -33,7 +33,31 @@ function tarefa(tid,tit,tar,pri,sit,ini,dln,cld){
     }
 }
 
-function exibeTarefas(){
+const endPointDelete  = "http://localhost:8080/Tarefas/del/"
+const endPointConclui = "http://localhost:8080/Tarefas/conc/"
+
+let tarefa_para_update;
+const urlUpdate = "http://localhost:8080/html/updateTarefa.html"
+
+async function deleta(num){
+    let url = endPointDelete + num
+    let request = new XMLHttpRequest()
+    request.open("GET",url,false)
+    request.setRequestHeader("content-type","text/plain")
+    request.send()
+}
+
+async function conclui(num){
+    let url = endPointConclui + num
+    let request = new XMLHttpRequest()
+    request.open("GET",url,false)
+    request.setRequestHeader("content-type","text/plain")
+    request.send()
+}
+
+
+
+    function exibeTarefas(){
 
     let containerPai = document.querySelector("#visualizar")
   
@@ -52,14 +76,49 @@ function exibeTarefas(){
 
             let datas = document.createElement("span")
             datas.className = "boxDatas"
-                datas.innerHTML = "Inicia: " + trf.inicio + " Termina: " + trf.deadline + " Concluida: " + trf.concluida 
+                datas.innerHTML = "Inicia: " + trf.inicio + "   Termina: " + trf.deadline +  (trf.concluida!=null?"   Concluida: "+ trf.concluida:" Não concluida") 
+
+            let delbutton = document.createElement("button")
+            delbutton.className = "deleteB"
+            delbutton.value = trf.id
+            delbutton.onclick = () =>{
+               let del = deleta(trf.id);
+                del.then(() => {return location.href="http://localhost:8080/html/deleteOk.html"})
+            }
+            delbutton.innerHTML="Deletar"
             
+
+            let upbutton = document.createElement("button")
+            upbutton.className = "updateB"
+            upbutton.value = trf.id
+            upbutton.onclick = () =>{
+                tarefa_para_update=trf.id
+                location.href = urlUpdate
+                window.location = urlUpdate + "?" + trf.id
+            }
+            upbutton.innerHTML="Update"
+        
+
+            
+            let concbutton = document.createElement("button")
+            concbutton.className = "concluirB"
+            concbutton.value = trf.id
+            concbutton.onclick = (()=>{
+                let conc = conclui(trf.id)
+                conc.then(()=> {return location.href="http://localhost:8080/html/concluidaOk.html"})
+            })
+            concbutton.innerHTML="Concluida"
+               
 
     containerPai.insertAdjacentElement("afterbegin",caixa)
     caixa.insertAdjacentElement("afterbegin",caixaTitulo)
     caixa.insertAdjacentElement("beforeend",conteudo)
     caixa.insertAdjacentElement("beforeend",datas)
-    })
+    caixa.insertAdjacentElement("beforeend",delbutton)
+    caixa.insertAdjacentElement("beforeend",upbutton) 
+    caixa.insertAdjacentElement("beforeend",concbutton)   
+})
 }
+
 
 

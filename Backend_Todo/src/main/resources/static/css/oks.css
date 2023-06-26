@@ -1,0 +1,32 @@
+html{
+display:flex;
+justify-content:center;
+}
+
+body{
+    width:700px;
+    height:500px;
+    background-color:#f3e8df;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    
+
+}
+
+
+
+#central{
+    border: solid 2px #d2b399;
+    width: 150px;
+    height: 150px;
+    display:flex;
+    justify-content:center
+}
+
+#visualizar{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction:column;
+}

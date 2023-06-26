@@ -1,0 +1,30 @@
+html{
+display:flex;
+justify-content:center;
+}
+body{
+    width:700px;
+    height:500px;
+    background-color:#f3e8df;
+}
+
+#Hcab{
+    background-color:#d2b399;
+}
+
+#central{
+    border: solid 2px #d2b399;
+    display:flex;
+}
+
+#botoeira{
+    display:flex;
+    flex-direction:column;
+}
+
+#visualizar{
+    display:block;
+    align-items: center;
+    
+}
+

@@ -1,22 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criar Tarefa</title>
-    <link rel="stylesheet" href="../css/tarefaCadastro.css"
+    <title>Update de tarefas</title>
+    <link rel="stylesheet" href="../css/tarefaPainel.css">
+    <link rel="stylesheet" href="../css/todasTarefas.css">
+    <script src="../js/tarefaUpdate.js"></script>
 </head>
 <body>
+    
+   
+    
     <header id="Hcab">
-        <h3>Criar tarefa</h3>
+        <h3>Update da tarefas</h3>
     </header>
     <main id="central">
         <aside id="botoeira">  
-            <a href="./tarefaPainel.html"><button >Voltar</button></a>
+            <a href="http://localhost:8080/html/tarefaPainel.html"><button >Painel de tarefas</button></a>
+            <button alt="Udpdate dos novos valores da tarefa">Update tarefa</button>
             
         </aside>
         <div id="visualizar">
-            <form  id="formCadTar"  name="formulario_cad_tarefa" action="http://localhost:8080/Tarefas" method="POST" >
+            <form  id="formUpTar"  name="formulario_up_tarefa" action="http://localhost:8080/Tarefas/up" method="POST" >
                 
                 <table>
                 <tr>
@@ -24,7 +30,7 @@
                         <label for="titulo">Título:</label>
                     </td>
                     <td>
-                        <input type="texta" maxlength="40" name="titulo">
+                        <input type="text" maxlength="40" id="titulo" name="titulo" >
                     </td>
                 </tr>
                 <tr>
@@ -32,7 +38,7 @@
                     <label for="tarefa">Tarefa:</label>
                     </td>
                     <td>
-                    <textarea maxlength="300" name="tarefa" cols="50" rows="6" ></textarea>
+                    <textarea maxlength="300" id="tarefa" name="tarefa" style="resize: none;" cols="50" rows="6" ></textarea>
                     </td>
                 </tr>   
                 <tr>
@@ -40,9 +46,9 @@
                     <label for="prioridade">Prioridade:</label>
                     </td>
                     <td>
-                    <input type="radio" name="prioridade" value="1">Alta<br>
-                    <input type="radio" name="prioridade" value="2">Normal<br>
-                    <input type="radio" name="prioridade" checked value="3">Baixa<br>
+                    <input type="radio" id="prioridade" name="prioridade"value="1">Alta<br>
+                    <input type="radio" id="prioridade" name="prioridade"value="2">Normal<br>
+                    <input type="radio" id="prioridade" name="prioridade"checked value="3">Baixa<br>
                     </td>
                 </tr>
         
@@ -51,7 +57,7 @@
                     <label>Início:</label>
                     </td>
                     <td>
-                    <input type="date" name="inicio">
+                    <input type="date" id="inicio" name="inicio">
                     </td>
                 </tr>
 
@@ -60,22 +66,23 @@
                     <label>Deadline:</label>
                     </td>
                     <td>
-                    <input type="date" name="deadline">
+                    <input type="date" id="deadline" name="deadline">
                     </td>
                 </tr>
 
                 <tr>
                     <td>
                     <input type="submit" value="Gravar">
-                    <input type="reset" value="Limpar">
+                    <input type="reset" onclick= 'seed_form(tarefa)'>
+                    <input type="hidden" id="id_update" name="id_update">
                     </td>
                 </tr>
                 </table>
             </form>
+            
         </div>
     </main>
-    <footer>
-        alguns status das tarefas
-    </footer>   
+
+    
 </body>
 </html>
