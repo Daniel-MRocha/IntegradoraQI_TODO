@@ -9,12 +9,33 @@ function retornaTarefa(numero){
     }
 
 
-let tarefa;
 
-let buscaTarefa = fetch(retornaTarefa(numero_da_tarefa))
-let tarefa_processada = buscaTarefa.then(i => {return i.json()})
+
+fetch(retornaTarefa(numero_da_tarefa))
+    .then(i => {return i.json()})
             .then(i => {
-                tarefa = tarefaUpdate(i.id,i.titulo,i.tarefa,i.prioridade,i.situacao,i.inicio,i.deadline,i.concluida)
+                  return tarefaUpdate(i.id,i.titulo,i.tarefa,i.prioridade,i.situacao,i.inicio,i.deadline,i.concluida)
+                    })
+                    .then(t=>{
+                        let prioridade
+                        switch(t.prioridade){
+                            case "Alta":
+                                prioridade = 1
+                                break
+                            case "Normal":
+                                prioridade = 2
+                                break            
+                            case "Baixa":
+                                prioridade = 3
+                                break            
+
+                        }
+                        document.getElementById("id_update").value = t.id
+                        document.getElementById("titulo").value = t.titulo
+                        document.getElementById("tarefa").value = t.tarefa
+                        document.getElementById("prioridade").value = prioridade
+                        document.getElementById("inicio").value = t.inicio
+                        document.getElementById("deadline").value = t.deadline
                     })
 
 function tarefaUpdate(id,titulo,tarefa,prioridade,situacao,inicio,deadline,concluida){
@@ -30,17 +51,11 @@ function tarefaUpdate(id,titulo,tarefa,prioridade,situacao,inicio,deadline,concl
      }
 }
 
-
-
-
-function seed_form(t){
-    document.getElementById("id_update").value = t.id
-    document.getElementById("titulo").value = t.titulo
-    document.getElementById("tarefa").value = t.tarefa
-    document.getElementById("prioridade").value = t.prioridade
-    document.getElementById("inicio").value = t.inicio
-    document.getElementById("deadline").value = t.deadline
+function redireciona(){
+    location.href="http://localhost:8080/"
 }
 
 
-seed_form(tarefa);
+
+
+

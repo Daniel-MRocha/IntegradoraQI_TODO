@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.StreamingHttpOutputMessage;
 import org.springframework.http.converter.json.GsonBuilderUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 
 import java.time.LocalDate;
@@ -48,11 +49,11 @@ public class TarefaController {
 
     //todo completar
     @PostMapping
-    public String salvaTarefa(@RequestParam String titulo,
-                              @RequestParam String tarefa,
-                              @RequestParam int prioridade,
-                              @RequestParam String inicio,
-                              @RequestParam String deadline) {
+    public ModelAndView salvaTarefa(@RequestParam String titulo,
+                                    @RequestParam String tarefa,
+                                    @RequestParam int prioridade,
+                                    @RequestParam String inicio,
+                                    @RequestParam String deadline) {
         Tarefa trf_s = new Tarefa();
         trf_s.setTitulo(titulo);
         trf_s.setTarefa(tarefa);
@@ -63,15 +64,15 @@ public class TarefaController {
 
 
         trfSrc.grava(trf_s);
-        return "ok";
+        return new ModelAndView("redirect:/html/gravado.html");
     }
 
     //todo consertar situação
     @PostMapping(value = "/up")
-    public String updateTarefa(@RequestParam int id_update,
+    public ModelAndView updateTarefa(@RequestParam int id_update,
                               @RequestParam String titulo,
                               @RequestParam String tarefa,
-                              @RequestParam int prioridade,
+                              @RequestParam Integer prioridade,
                               @RequestParam String inicio,
                               @RequestParam String deadline) {
         Tarefa trf_u = trfSrc.updateTarefa(id_update);
@@ -84,7 +85,7 @@ public class TarefaController {
 
 
         trfSrc.grava(trf_u);
-        return "ok";
+        return new ModelAndView("redirect:/html/gravado.html");
     }
 
 

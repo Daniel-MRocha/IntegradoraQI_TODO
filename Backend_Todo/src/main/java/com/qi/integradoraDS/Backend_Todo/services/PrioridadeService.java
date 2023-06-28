@@ -14,8 +14,6 @@ public class PrioridadeService {
     private PrioridadeRepository priRep;
 
     public Prioridade buscaPri(int numero) {
-        var aux = priRep.findById(numero);
-        if (aux.isPresent()) return aux.get();
-        return null;
+        return priRep.getReferenceById(numero);
     }
 }
