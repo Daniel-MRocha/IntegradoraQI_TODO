@@ -9,6 +9,7 @@ import com.qi.integradoraDS.Backend_Todo.services.SituacaoService;
 import com.qi.integradoraDS.Backend_Todo.services.TarefaService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.util.NullableUtils;
 import org.springframework.http.StreamingHttpOutputMessage;
 import org.springframework.http.converter.json.GsonBuilderUtils;
 import org.springframework.web.bind.annotation.*;
@@ -82,6 +83,7 @@ public class TarefaController {
         trf_u.setSituacao(sitSrv.buscaSit(1));
         trf_u.setInicio(LocalDate.parse(inicio));
         trf_u.setDeadline(LocalDate.parse(deadline));
+        trf_u.setConcluida(null);
 
 
         trfSrc.grava(trf_u);

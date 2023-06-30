@@ -7,7 +7,6 @@
     flex-direction: column;
    }
 
-
         .boxTarefa{
         
                 background-color: #f3e8df;
@@ -52,3 +51,66 @@
                 border-top: double  1px white;
                  
         }
+
+        .boxPrioridade{
+                display: block;
+                width: 350px;
+                font-size: 10px;
+                font-weight: 500;
+                margin-left: 5px;
+                margin-bottom: 3px;
+                padding-top: 2px;
+                border-top: double  3px white;
+                color: rgb(3, 3, 3); 
+        }
+        .onConcluida{
+                display: block;
+                width: 350px;
+                font-size: 10px;
+                font-weight: 500;
+                margin-left: 5px;
+                margin-bottom: 7px;
+                padding-top: 2px;
+                border-top: double  3px white;
+                color: green; 
+        }
+
+        .onExpirada{
+                display: block;
+                width: 350px;
+                font-size: 10px;
+                font-weight: 500;
+                margin-left: 5px;
+                margin-bottom: 7px;
+                padding-top: 2px;
+                border-top: double  3px white;
+                color: rgb(234, 145, 37); 
+        }
+
+        .onAberta{
+                display: block;
+                width: 350px;
+                font-size: 10px;
+                font-weight: 500;
+                margin-left: 5px;
+                margin-bottom: 7px;
+                padding-top: 2px;
+                border-top: double  3px white;
+                color: rgb(103, 97, 10); 
+        }
+
+        .boxBotoes{
+                margin-left: 5px;
+                padding: 5px;
+        }
+
+        button{
+                border-radius: 5px;
+                width: 100px;
+                height: 30px;
+                font-weight: 400;
+                color: rgb(44, 6, 6);
+                background-color: antiquewhite;
+                justify-content: start;
+                padding: 5px;
+            }

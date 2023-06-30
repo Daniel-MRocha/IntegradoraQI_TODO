@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criar Tarefa</title>
-    <link rel="stylesheet" href="../css/tarefaCadastro.css"
+    <link rel="stylesheet" href="../css/tarefaCadastro.css">
+    
 </head>
 <body>
     <header id="Hcab">
@@ -12,7 +13,7 @@
     </header>
     <main id="central">
         <aside id="botoeira">  
-            <a href="./tarefaPainel.html"><button >Voltar</button></a>
+            <a href="./tarefaPainel.html"><button class="button">Painel Tarefas</button></a>
             
         </aside>
         <div id="visualizar">
@@ -51,7 +52,7 @@
                     <label>Início:</label>
                     </td>
                     <td>
-                    <input type="date" name="inicio" required>
+                    <input id="inicio" type="date" name="inicio" required>
                     </td>
                 </tr>
 
@@ -60,22 +61,22 @@
                     <label>Deadline:</label>
                     </td>
                     <td>
-                    <input type="date" name="deadline" required>
+                    <input  onchange = validaData()  id="deadline"  type="date" name="deadline" required>
                     </td>
                 </tr>
 
                 <tr>
                     <td>
-                    <input type="submit" value="Gravar">
-                    <input type="reset" value="Limpar">
+                    <input class="button" type="submit" value="Gravar">
+                    </td>
+                    <td>
+                    <input class="button" type="reset" value="Limpar">
                     </td>
                 </tr>
                 </table>
             </form>
         </div>
-    </main>
-    <footer>
-        alguns status das tarefas
-    </footer>   
+    </main> 
+    <script defer src="../js/validacao_data.js"></script>
 </body>
 </html>

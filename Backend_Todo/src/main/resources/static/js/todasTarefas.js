@@ -11,7 +11,7 @@ dados.then(dados =>{return dados.json()})
                 [...d].forEach(ele=>{
                 listaDeTarefas.push(constroiTarefa(ele))
              }) 
-    });
+    })
 
 
 //Factory de tarefa
@@ -65,6 +65,8 @@ async function conclui(num){
     listaDeTarefas.forEach(trf =>{
             let caixa = document.createElement("div")
             caixa.className = "boxTarefa"
+                let caixaBotoes = document.createElement("span")
+                caixaBotoes.className="boxBotoes"
             
             let caixaTitulo = document.createElement("span")
             caixaTitulo.className = "boxTitulo"
@@ -76,7 +78,28 @@ async function conclui(num){
 
             let datas = document.createElement("span")
             datas.className = "boxDatas"
-                datas.innerHTML = "Inicia: " + trf.inicio + "   Termina: " + trf.deadline +  (trf.concluida!=null?"   Concluida: "+ trf.concluida:" Não concluida") 
+                if(trf.concluida == null){
+                    datas.innerHTML = "Inicia: " + trf.inicio + "   Termina: " + trf.deadline  
+                } else {
+                    datas.innerHTML = "Inicia: " + trf.inicio + "   Termina: " + trf.deadline +  "  Concluida: " + trf.concluida
+                }
+
+            let situacao = document.createElement("span")
+                    if(trf.concluida != null){
+                        situacao.className="onConcluida"
+                        situacao.innerHTML="Concluida"
+                         
+                    }else if(trf.situacao=="Expirada"){
+                        situacao.className="onExpirada"
+                        situacao.innerHTML="Expirada"
+                    }else{
+                        situacao.className="onAberta"
+                        situacao.innerHTML="Em andamento"
+                    } 
+
+            let prioridade = document.createElement("span")
+            prioridade.className = "boxPrioridade"
+            prioridade.innerHTML = "Prioridade: " + trf.prioridade
 
             let delbutton = document.createElement("button")
             delbutton.className = "deleteB"
@@ -107,18 +130,26 @@ async function conclui(num){
                 let conc = conclui(trf.id)
                 conc.then(()=> {return location.href="http://localhost:8080/html/concluidaOk.html"})
             })
-            concbutton.innerHTML="Concluida"
+            concbutton.innerHTML="Concluir"
+            
                
 
     containerPai.insertAdjacentElement("afterbegin",caixa)
     caixa.insertAdjacentElement("afterbegin",caixaTitulo)
     caixa.insertAdjacentElement("beforeend",conteudo)
     caixa.insertAdjacentElement("beforeend",datas)
-    caixa.insertAdjacentElement("beforeend",delbutton)
-    caixa.insertAdjacentElement("beforeend",upbutton) 
-    caixa.insertAdjacentElement("beforeend",concbutton)   
-})
+    caixa.insertAdjacentElement("beforeend",prioridade)
+    caixa.insertAdjacentElement("beforeend",situacao)
+            caixa.insertAdjacentElement("beforeend",caixaBotoes)
+                caixaBotoes.insertAdjacentElement("afterbegin",delbutton)
+                caixaBotoes.insertAdjacentElement("beforeend",upbutton)
+                if(trf.concluida==null){
+                    caixaBotoes.insertAdjacentElement("beforeend",concbutton)
+                } 
+            })
 }
+
+setTimeout(() => exibeTarefas(),1200)
 
 
 

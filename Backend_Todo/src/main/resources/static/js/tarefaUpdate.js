@@ -34,8 +34,19 @@ fetch(retornaTarefa(numero_da_tarefa))
                         document.getElementById("titulo").value = t.titulo
                         document.getElementById("tarefa").value = t.tarefa
                         document.getElementById("prioridade").value = prioridade
-                        document.getElementById("inicio").value = t.inicio
-                        document.getElementById("deadline").value = t.deadline
+
+                        let inicio = document.getElementById("inicio")
+                        inicio.value = t.inicio
+                          
+                        let deadline = document.getElementById("deadline")
+                                deadline.onchange = () => {
+                                    let ini = inicio.value
+                                    let dea = deadline.value 
+                                    let resultado = validaData(ini,dea)
+                                        if(resultado==true){
+                                            deadline.value=null
+                                        }
+                                }   
                     })
 
 function tarefaUpdate(id,titulo,tarefa,prioridade,situacao,inicio,deadline,concluida){
@@ -52,10 +63,24 @@ function tarefaUpdate(id,titulo,tarefa,prioridade,situacao,inicio,deadline,concl
 }
 
 function redireciona(){
-    location.href="http://localhost:8080/"
+    location.href="http://localhost:8080/tarefaPainel.html"
 }
 
+function recarrega(){
+    location.href="http://localhost:8080/html/updateTarefa.html?" + numero_da_tarefa
+}
 
+function validaData(data1,data2){ 
 
+    let transD1 = data1.split("-")
+    let transD2 = data2.split("-")
 
-
+    let d1 = new Date(transD1[0], transD1[1] - 1, transD1[2])
+    let d2 = new Date(transD2[0], transD2[1] - 1, transD2[2])
+    if(d1>d2){
+        alert("O deadline deve ser igual posterior a data inicio da tarefa")
+        return true
+    }else{
+        return false
+    }
+}

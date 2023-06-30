@@ -24,7 +24,19 @@ body{
 
 #visualizar{
     display:block;
-    align-items: center;
-    
+    align-items: center;   
 }
+
+.button{
+    border-radius: 5px;
+    width: 100px;
+    height: 30px;
+    font-weight: 400;
+    color: rgb(44, 6, 6);
+    background-color: antiquewhite;
+    justify-content: start;
+    padding: 5px;
+}
+
+
 

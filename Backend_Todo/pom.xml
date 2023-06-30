@@ -12,6 +12,7 @@
 	<artifactId>Backend_Todo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Backend_Todo</name>
+	<packaging>jar</packaging>
 	<description>backend da atividade integradora</description>
 	<properties>
 		<java.version>17</java.version>
