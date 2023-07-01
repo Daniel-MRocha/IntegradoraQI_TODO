@@ -2,8 +2,10 @@ package com.qi.integradoraDS.Backend_Todo.services;
 
 import com.qi.integradoraDS.Backend_Todo.Dtos.TarefaDto;
 import com.qi.integradoraDS.Backend_Todo.Projection.TarefaProjection;
+import com.qi.integradoraDS.Backend_Todo.entities.Situacao;
 import com.qi.integradoraDS.Backend_Todo.entities.Tarefa;
 import com.qi.integradoraDS.Backend_Todo.repositories.TarefaRepository;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -59,11 +61,31 @@ public class TarefaService {
         trf.setConcluida(LocalDate.now());
         trfRpy.save(trf);
 }
-
     public Tarefa updateTarefa(Integer num){
         return trfRpy.getReferenceById(num);
     }
 
+    @PostConstruct
+    public void  lista_UpdateSituacao(){
+        LocalDate hoje = LocalDate.now();
+        var lista_tarefas = trfRpy.findAll();
+
+        for(Tarefa t: lista_tarefas){
+            if((t.getDeadline().isAfter(hoje) && t.getConcluida()==null)){
+                Situacao sit = new Situacao();
+                sit.setId(2);
+                sit.setStatus("Expirada");
+                t.setSituacao(sit);
+                trfRpy.save(t);
+            } else if (t.getDeadline().isAfter(hoje) && t.getConcluida()!=null){
+                Situacao sit = new Situacao();
+                sit.setId(3);
+                sit.setStatus("Concluida");
+                t.setSituacao(sit);
+                trfRpy.save(t);
+            }
+        }
+    }
 }
 
 
