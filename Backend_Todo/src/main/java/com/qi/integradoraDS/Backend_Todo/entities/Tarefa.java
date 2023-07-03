@@ -1,44 +1,44 @@
 package com.qi.integradoraDS.Backend_Todo.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
-@JsonIgnoreProperties( value={"handler","hibernateLazyInitializer","FieldHandler"})
+@Table(name = "TAREFA")
 public class Tarefa implements Serializable {
     private static final long serialVersionUID = 1L;
 
     //Atributos
     @Id
+    @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(columnDefinition = "varchar", length = 40)
+    @Column(name = "TITULO")
     private String titulo;
 
-    @Column(columnDefinition = "text", length = 300)
+    @Column(name = "TAREFA")
     private String tarefa;
 
     @ManyToOne
-    @JoinColumn(name="ID_PRIORIDADE")
+    @JoinColumn(name="PRIORIDADE")
     private Prioridade prioridade;
 
     @ManyToOne
-    @JoinColumn(name = "ID_SITUACAO")
+    @JoinColumn(name = "SITUACAO")
     private Situacao situacao;
 
     @JsonFormat(pattern="YYYY-MM-DD")
-    @Column(columnDefinition = "DATE")
+    @Column(name="INICIO",columnDefinition = "DATE")
     private LocalDate inicio;
 
-    @Column(columnDefinition = "DATE")
+    @Column(name = "DEADLINE",columnDefinition = "DATE")
     private LocalDate deadline;
 
-    @Column(columnDefinition = "DATE")
+    @Column(name="CONCLUIDA",columnDefinition = "DATE")
     private LocalDate concluida;
 
 

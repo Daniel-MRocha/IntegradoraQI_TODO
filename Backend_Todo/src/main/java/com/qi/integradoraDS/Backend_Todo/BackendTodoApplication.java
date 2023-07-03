@@ -9,7 +9,7 @@ public class BackendTodoApplication {
 	public static void main(String[] args) {
 
 		SpringApplication.run(BackendTodoApplication.class, args);
-		System.out.printf("Teste funcional");
+		System.out.printf("Funcional");
 	}
 
 }

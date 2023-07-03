@@ -12,6 +12,7 @@ public class Prioridade implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private int id;
     private String tipo;
 

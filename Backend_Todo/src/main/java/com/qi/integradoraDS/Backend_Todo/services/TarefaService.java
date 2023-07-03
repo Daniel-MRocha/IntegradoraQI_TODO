@@ -65,7 +65,7 @@ public class TarefaService {
         return trfRpy.getReferenceById(num);
     }
 
-    @PostConstruct
+   /** @PostConstruct
     public void  lista_UpdateSituacao(){
         LocalDate hoje = LocalDate.now();
         var lista_tarefas = trfRpy.findAll();
@@ -85,7 +85,7 @@ public class TarefaService {
                 trfRpy.save(t);
             }
         }
-    }
+    }*/
 }
 
 

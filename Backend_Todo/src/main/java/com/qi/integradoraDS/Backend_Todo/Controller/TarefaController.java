@@ -56,6 +56,7 @@ public class TarefaController {
                                     @RequestParam String inicio,
                                     @RequestParam String deadline) {
         Tarefa trf_s = new Tarefa();
+        trf_s.setConcluida(null);
         trf_s.setTitulo(titulo);
         trf_s.setTarefa(tarefa);
         trf_s.setPrioridade(priSrc.buscaPri(prioridade));
