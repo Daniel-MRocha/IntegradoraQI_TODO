@@ -8,17 +8,17 @@ import org.springframework.data.jpa.repository.Query;
 public interface TarefaRepository extends JpaRepository<Tarefa,Integer> {
 
     @Query(nativeQuery = true,value = """
-            SELECT TAREFA.ID, TAREFA.TITULO, TAREFA.TAREFA,PRIORIDADE.TIPO, SITUACAO.STATUS, 
-            TAREFA.INICIO, TAREFA.DEADLINE, TAREFA.CONCLUIDA FROM TAREFA
-            INNER JOIN PRIORIDADE ON PRIORIDADE.ID=TAREFA.PRIORIDADE
-            INNER JOIN SITUACAO ON SITUACAO.ID=TAREFA.SITUACAO
-            WHERE TAREFA.ID = :Id
-            ORDER BY TAREFA.TITULO
+            SELECT tarefa.id, tarefa.titulo, tarefa.tarefa,prioridade.tipo, situacao.status, 
+            tarefa.inicio, tarefa.deadline, tarefa.concluida FROM tarefa
+            INNER JOIN prioridade ON prioridade.id=tarefa.prioridade
+            INNER JOIN situacao ON situacao.id=tarefa.situacao
+            WHERE tarefa.id = :Id
+            ORDER BY tarefa.titulo
             """)
     TarefaProjection todasTarefas(Integer Id);
 
     @Query(nativeQuery = true,value = """
-            DELETE FROM TAREFA WHERE TAREFA.ID = :Id
+            DELETE FROM tarefa WHERE tarefa.id = :Id
             """)
     TarefaProjection deletaTarefa(Integer Id);
 
